@@ -1,19 +1,30 @@
 /**
  * All requireds
  */
-const fs = require('fs');
+const argv = require('yargs')
+                .command('listar','Imprime en consola la tabla de multiplicar',{
+                    base:{
+                        demand: true,
+                        alias: 'b'
+                    },
+                    limite: {
+                        alias: 'l',
+                        default: 10
+                    }
+                })
+                .help()
+                .argv;
 
-let base = 3;
-let limit = 10;
-let resultado = '';
-for( var i = 1; i <= limit; i++ ){
-    resultado += `${base} * ${i}: ${i * 2 } \n`;
-}
-
-fs.writeFile(`tabla-${base}.txt`, resultado, err => {
-    if( err ) throw err;
-
-    console.log('El archivo ha sido creado');
+const { crearArchivo } = require('./multiplicar/multiplicar');
 
 
-});
+//let parametro = argv[2].split('=')[1];
+
+console.log(argv.base);
+console.log(argv.limite);
+/*
+crearArchivo( parametro )
+    .then( archivo => console.log( `Archivo creado: ${ archivo }` ) )
+    .catch( e => {
+        console.log( e );
+    });*/

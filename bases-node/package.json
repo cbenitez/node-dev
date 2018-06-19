@@ -9,6 +9,7 @@
   "author": "Christian Benitez",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.3.0",
     "yargs": "^11.0.0"
   }
 }
